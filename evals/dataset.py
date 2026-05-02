@@ -5,10 +5,16 @@ load_dotenv()
 
 client = Client()
 
-dataset = client.create_dataset(
-    dataset_name="chatbot-bot-dataset",
-    description="Test dataset for chatbot evaluation"
-)
+# ======================================================
+#     Check whether the database is already exist or not
+# ======================================================
+
+try:
+    dataset = client.read_dataset(dataset_name="chatbot-bot-dataset")
+    print("Dataset found")
+except Exception as e:
+    dataset = client.create_dataset(dataset_name="chatbot-bot-dataset",description="Test dataset for chatbot evaluation")
+    print("Dataset not found, creating new one...")
 
 # Correct format
 client.create_example(
