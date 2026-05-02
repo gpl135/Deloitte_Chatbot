@@ -1,0 +1,5 @@
+langchain==1.2.8
+langgraph==1.07
+openai==0.27.10
+langsmith==1.2.2
+pytest==9.0.2
